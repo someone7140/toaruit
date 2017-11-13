@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+
+
+
+
+
+<html>
+<head>
+<title>分数が計算できる電卓</title>
+<meta name="description" content="分数が計算できる電卓">
+<meta name="keywords" content="分数,電卓">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<script type="text/javascript" src="../js_dentaku/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../js_dentaku/dentakuutil.js"></script>
+<script type="text/javascript" src="../js_dentaku/keisanshikiutil.js"></script>
+<script type="text/javascript" src="../js_dentaku/bunsuuutil.js"></script>
+<script type="text/javascript" src="../js_dentaku/bunsuudentaku.js"></script>
+</head>
+
+<body bgcolor="lightgreen" >
+<font size=5>■分数計算電卓 </font>
+<br/><br/>
+<a href ="#" id="reference">使用方法</a>
+<div id="manual">
+&nbsp;①分子分母のセレクトボックスより、計算したい形式を選択して下さい。（整数、平方根、計算式が可能）<br/>
+&nbsp;②テキストボックスに<b>半角数字</b>を入力してください。分母は0以外の数字を入力してください。（全角数字や数字以外の文字はエラーになります）<br/>
+&nbsp;③「計算」ボタンをクリックしてください。
+
+</div>
+<br/><br/>
+
+<table id="size" width="1200">
+<tr>
+<td>
+<table>
+<tr>
+<td>
+
+左辺分子
+&nbsp;&nbsp
+<select id="kubunsahen">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+<option value="shiki">計算式</option>
+</select>
+</td>
+<td></td>
+<td>
+右辺分子
+&nbsp;&nbsp
+<select id="kubunuhen">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+<option value="shiki">計算式</option>
+</select>
+</td>
+<td></td><td rowspan="5"><div id="result"></div></td><td></td>
+</tr>
+
+<tr>
+<td>
+<table border=1 ><tr><td>
+<table>
+<tr>
+
+<td>
+&nbsp;&nbsp;
+<select id="sahenenzan">
+<option value="wa">＋</option>
+<option value="sa">－</option>
+</select>
+&nbsp;&nbsp;&nbsp;
+<input type="text" id="sahenseisuu" class="input" maxlength=10 size=15 />
+<input type="text" id="sahenheihouseisuub" class="inputheihouseisuu" maxlength=10 size=7 />
+<label id="sahenroute">√</label>
+<input type="text" id="sahenheihoub" class="input" maxlength=10 size=15 />
+</td>
+
+<td>
+<label class="sahenshiki">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<select id="sahenenzancounter" class="sahenshiki">
+<option value="wa">＋</option>
+<option value="sa">－</option>
+</select>
+<label class="sahenshiki">&nbsp;&nbsp;&nbsp;</label>
+<input type="text" id="sahenseisuucounter" class="input" maxlength=10 size=15 />
+<input type="text" id="sahenheihouseisuubcounter" class="inputheihouseisuu" maxlength=10 size=7 />
+<label id="sahenroutecounter">√</label>
+<input type="text" id="sahenheihoubcounter" class="input" maxlength=10 size=15 />
+
+
+</td></tr>
+
+<tr>
+<td>
+<label class="sahenshiki">&nbsp;&nbsp;</label>
+<select id="sahenshikikubun" class="sahenshiki">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+</select>
+</td>
+
+<td>
+<label class="sahenshiki">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<select id="sahenshikikubuncounter" class="sahenshiki">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+</select>
+</td>
+</tr>
+
+
+</table>
+
+</td></tr>
+</table>
+</td>
+
+<td></td>
+
+<td>
+
+<table border=1><tr><td>
+<table>
+<tr>
+<td>
+
+&nbsp;&nbsp
+<select id="uhenenzan">
+<option value="wa">＋</option>
+<option value="sa">－</option>
+</select>
+&nbsp;&nbsp;&nbsp;
+<input type="text" id="uhenseisuu" class="input" maxlength=10 size=15 />
+<input type="text" id="uhenheihouseisuub" class="inputheihouseisuu" maxlength=10 size=7 />
+<label id="uhenroute">√</label>
+<input type="text" id="uhenheihoub" class="input" maxlength=10 size=15 />
+</td>
+
+
+<td>
+<label class="uhenshikicounter">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<select id="uhenenzancounter" class="uhenshiki">
+<option value="wa">＋</option>
+<option value="sa">－</option>
+</select>
+<label class="uhenshiki">&nbsp;&nbsp;&nbsp;</label>
+<input type="text" id="uhenseisuucounter" class="input" maxlength=10 size=15 />
+<input type="text" id="uhenheihouseisuubcounter" class="inputheihouseisuu" maxlength=10 size=7 />
+<label id="uhenroutecounter">√</label>
+<input type="text" id="uhenheihoubcounter" class="input" maxlength=10 size=15 />
+
+</td></tr>
+
+
+<tr>
+<td>
+<label class="uhenshiki">&nbsp;&nbsp;</label>
+<select id="uhenshikikubun" class="uhenshiki">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+</select>
+</td>
+
+<td>
+<label class="uhenshiki">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<select id="uhenshikikubuncounter" class="uhenshiki">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+</select>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</td>
+
+<td></td>
+
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>
+<label id="sahenlinejisuu">――――――――――――</label>
+<label id="sahenlineroute">―――――――――――――――――</label>
+<label id="sahenlineshiki">―――――――――――――――――――――――</label>
+</td>
+<td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<select id="enzan">
+<option value="wa">＋</option>
+<option value="sa">－</option>
+<option value="seki">×</option>
+<option value="syou">÷</option>
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+<td>
+<label id="uhenlinejisuu">―――――――――――――</label>
+<label id="uhenlineroute">――――――――――――――――――</label>
+<label id="uhenlineshiki">―――――――――――――――――――――――</label>
+</td>
+
+<td>&nbsp;&nbsp;&nbsp;&nbsp;
+<font size=5>=</font>
+</td>
+
+<td></td>
+
+<td>
+&nbsp;&nbsp;
+<input type="button" id="calculate" value="計算">
+</td>
+</tr>
+
+
+<tr>
+<td>
+<table border=1 ><tr><td>
+<table>
+<tr>
+
+<td>
+&nbsp;&nbsp;
+<input type="text" id="sahenseisuubunbo" class="input bunbo" maxlength=10 size=15 />
+<input type="text" id="sahenheihouseisuubbunbo" class="inputheihouseisuu bunbo" maxlength=10 size=7 />
+<label id="sahenroutebunbo">√</label>
+<input type="text" id="sahenheihoubbunbo" class="input bunbo" maxlength=10 size=15 />
+</td>
+
+<td>
+<label class="sahenshikibunbo">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<select id="sahenenzancounterbunbo" class="sahenshikibunbo">
+<option value="wa">＋</option>
+<option value="sa">－</option>
+</select>
+<label class="sahenshikibunbo">&nbsp;&nbsp;&nbsp;</label>
+<input type="text" id="sahenseisuucounterbunbo" class="input bunbo" maxlength=10 size=15 />
+<input type="text" id="sahenheihouseisuubcounterbunbo" class="inputheihouseisuu bunbo" maxlength=10 size=7 />
+<label id="sahenroutecounterbunbo">√</label>
+<input type="text" id="sahenheihoubcounterbunbo" class="input bunbo" maxlength=10 size=15 />
+
+
+</td></tr>
+
+<tr>
+<td>
+<label class="sahenshikibunbo">&nbsp;&nbsp;</label>
+<select id="sahenshikikubunbunbo" class="sahenshikibunbo">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+</select>
+</td>
+
+<td>
+<label class="sahenshikibunbo">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<select id="sahenshikikubuncounterbunbo" class="sahenshikibunbo">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+</select>
+</td>
+</tr>
+
+</table>
+
+</td></tr>
+</table>
+</td>
+
+
+<td></td>
+<td>
+
+<table border=1><tr><td>
+<table>
+<tr>
+<td>
+
+&nbsp;&nbsp
+<input type="text" id="uhenseisuubunbo" class="input bunbo" maxlength=10 size=15 />
+<input type="text" id="uhenheihouseisuubbunbo" class="inputheihouseisuu bunbo" maxlength=10 size=7 />
+<label id="uhenroutebunbo">√</label>
+<input type="text" id="uhenheihoubbunbo" class="input bunbo" maxlength=10 size=15 />
+</td>
+
+
+<td>
+<label class="uhenshikicounterbunbo">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<select id="uhenenzancounterbunbo" class="uhenshikibunbo">
+<option value="wa">＋</option>
+<option value="sa">－</option>
+</select>
+<label class="uhenshikibunbo">&nbsp;&nbsp;&nbsp;</label>
+<input type="text" id="uhenseisuucounterbunbo" class="input bunbo" maxlength=10 size=15 />
+<input type="text" id="uhenheihouseisuubcounterbunbo" class="inputheihouseisuu bunbo" maxlength=10 size=7 />
+<label id="uhenroutecounterbunbo">√</label>
+<input type="text" id="uhenheihoubcounterbunbo" class="input bunbo" maxlength=10 size=15 />
+
+</td></tr>
+
+
+<tr>
+<td>
+<label class="uhenshikibunbo">&nbsp;&nbsp;</label>
+<select id="uhenshikikubunbunbo" class="uhenshikibunbo">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+</select>
+</td>
+
+<td>
+<label class="uhenshikibunbo">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<select id="uhenshikikubuncounterbunbo" class="uhenshikibunbo">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+</select>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</td>
+<td></td><td></td><td></td>
+</tr>
+
+
+<tr>
+<td>
+左辺分母
+&nbsp;&nbsp
+<select id="kubunsahenbunbo">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+<option value="shiki">計算式</option>
+</select>
+</td>
+<td></td>
+<td>
+右辺分母
+&nbsp;&nbsp
+<select id="kubunuhenbunbo">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+<option value="shiki">計算式</option>
+</select>
+</td>
+<td></td><td></td><td></td>
+</tr>
+
+
+</table>
+
+</td>
+</tr>
+</table>
+
+<hr/>
+<div align="left"><font size=3><a href="../dentaku.html">TOP</a></font></div>
+</div>
+</body>
+</html>

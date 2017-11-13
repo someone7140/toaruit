@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+
+
+
+
+
+<html>
+<head>
+<title>平方根が計算できる電卓</title>
+<meta name="description" content="平方根が計算できる電卓">
+<meta name="keywords" content="平方根,電卓">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<script type="text/javascript" src="../js_dentaku/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../js_dentaku/dentakuutil.js"></script>
+<script type="text/javascript" src="../js_dentaku/keisanshikiutil.js"></script>
+<script type="text/javascript" src="../js_dentaku/routedentaku.js"></script>
+</head>
+
+<body bgcolor="lightgreen" >
+<font size=5>■√計算電卓 </font>
+<br/><br/>
+<a href ="#" id="reference">使用方法</a>
+<div id="manual">
+&nbsp;①セレクトボックスより、計算したい形式を選択して下さい。（整数、小数、平方根、計算式が可能）<br/>
+&nbsp;②テキストボFックスに<b>半角数字</b>を入力してください。（全角数字や数字以外の文字はエラーになります）<br/>
+&nbsp;③「計算」ボタンをクリックしてください。（小数の計算はプログラムの性質上、処理が重くなりますのでご注意ください）
+
+</div>
+<br/><br/>
+
+<table id="size" width="1200">
+<tr>
+<td>
+<table>
+<tr>
+<td>
+
+左辺
+&nbsp;&nbsp
+<select id="kubunsahen">
+<option value="seisuu">整数</option>
+<option value="syousuu">小数</option>
+<option value="route">平方根</option>
+<option value="shiki">計算式</option>
+</select>
+</td>
+<td></td>
+<td>
+右辺
+&nbsp;&nbsp
+<select id="kubunuhen">
+<option value="seisuu">整数</option>
+<option value="syousuu">小数</option>
+<option value="route">平方根</option>
+<option value="shiki">計算式</option>
+</select>
+</td>
+<td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>
+<table border=1 ><tr><td>
+<table>
+<tr>
+
+<td>
+&nbsp;&nbsp;
+<select id="sahenenzan">
+<option value="wa">＋</option>
+<option value="sa">－</option>
+</select>
+&nbsp;&nbsp;&nbsp;
+<input type="text" id="sahenseisuu" class="input" maxlength=10 size=15 />
+<input type="text" id="sahenseisuub" class="input" maxlength=10 size=15 />
+<label id="sahensyousuuten">．</label>
+<input type="text" id="sahensyousuub" class="input" maxlength=10 size=15 />
+<input type="text" id="sahenheihouseisuub" class="inputheihouseisuu" maxlength=10 size=7 />
+<label id="sahenroute">√</label>
+<input type="text" id="sahenheihoub" class="input" maxlength=10 size=15 />
+</td>
+
+<td>
+<label class="sahenshiki">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<select id="sahenenzancounter" class="sahenshiki">
+<option value="wa">＋</option>
+<option value="sa">－</option>
+</select>
+<label class="sahenshiki">&nbsp;&nbsp;&nbsp;</label>
+<input type="text" id="sahenseisuucounter" class="input" maxlength=10 size=15 />
+<input type="text" id="sahenheihouseisuubcounter" class="inputheihouseisuu" maxlength=10 size=7 />
+<label id="sahenroutecounter">√</label>
+<input type="text" id="sahenheihoubcounter" class="input" maxlength=10 size=15 />
+
+
+</td></tr>
+
+<tr>
+<td>
+<label class="sahenshiki">&nbsp;&nbsp;</label>
+<select id="sahenshikikubun" class="sahenshiki">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+</select>
+</td>
+
+<td>
+<label class="sahenshiki">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<select id="sahenshikikubuncounter" class="sahenshiki">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+</select>
+</td>
+</tr>
+
+
+</table>
+
+</td></tr></table>
+
+</td>
+
+<td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<select id="enzan">
+<option value="wa">＋</option>
+<option value="sa">－</option>
+<option value="seki">×</option>
+<option value="syou">÷</option>
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+</td>
+
+<td>
+
+<table border=1><tr><td>
+<table>
+<tr>
+<td>
+
+&nbsp;&nbsp
+<select id="uhenenzan">
+<option value="wa">＋</option>
+<option value="sa">－</option>
+</select>
+&nbsp;&nbsp;&nbsp;
+<input type="text" id="uhenseisuu" class="input" maxlength=10 size=15 />
+<input type="text" id="uhenseisuub" class="input" maxlength=10 size=15 />
+<label id="uhensyousuuten">．</label>
+<input type="text" id="uhensyousuub" class="input" maxlength=10 size=15 />
+<input type="text" id="uhenheihouseisuub" class="inputheihouseisuu" maxlength=10 size=7 />
+<label id="uhenroute">√</label>
+<input type="text" id="uhenheihoub" class="input" maxlength=10 size=15 />
+</td>
+
+
+<td>
+<label class="uhenshikicounter">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<select id="uhenenzancounter" class="uhenshiki">
+<option value="wa">＋</option>
+<option value="sa">－</option>
+</select>
+<label class="uhenshiki">&nbsp;&nbsp;&nbsp;</label>
+<input type="text" id="uhenseisuucounter" class="input" maxlength=10 size=15 />
+<input type="text" id="uhenheihouseisuubcounter" class="inputheihouseisuu" maxlength=10 size=7 />
+<label id="uhenroutecounter">√</label>
+<input type="text" id="uhenheihoubcounter" class="input" maxlength=10 size=15 />
+
+</td></tr>
+
+
+<tr>
+<td>
+<label class="uhenshiki">&nbsp;&nbsp;</label>
+<select id="uhenshikikubun" class="uhenshiki">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+</select>
+</td>
+
+<td>
+<label class="uhenshiki">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<select id="uhenshikikubuncounter" class="uhenshiki">
+<option value="seisuu">整数</option>
+<option value="route">平方根</option>
+</select>
+</td>
+</tr>
+
+
+</table>
+
+</td></tr></table>
+
+</td>
+
+<td>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font size=5>=</font>
+</td>
+
+<td>
+<div id="result"></div>
+</td>
+
+<td>
+&nbsp;&nbsp;
+<input type="button" id="calculate" value="計算">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<hr/>
+<div align="left"><font size=3><a href="../dentaku.html">TOP</a></font></div>
+</div>
+</body>
+</html>
