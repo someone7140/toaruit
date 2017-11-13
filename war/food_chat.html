@@ -1,0 +1,84 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+<title>食べたいものチャット</title>
+<meta name="description" content="食べたい">
+<meta name="keywords" content="食べたい">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<script type="text/javascript" src="js/jquery-2.2.3.min.js?ver=20170703"></script>
+<script type="text/javascript" src="js_food/food_util.js"></script>
+<script type="text/javascript" src="js_food/food_js.js"></script>
+<style type="text/css">
+ <!--
+  #fixed
+  {
+    position: fixed;            /* ヘッダーの固定 */
+    top: 0px;                   /* 位置(上0px) */
+    left: 0px;                  /* 位置(右0px) */
+    width: 100%;                /* 横幅100%　*/
+    height: 130px; 
+    background: white;
+    z-index: 2;
+  }
+  
+  #chatarea
+  {
+    margin:140px 0px 0px 0px;
+    z-index: 1;
+  }
+  
+  #selectarea
+  {
+    display:none;
+  }
+  
+  .machinearea {/*親div*/
+     position: relative;/*相対配置*/
+  }
+
+  .machinearea .machineword {
+    position: absolute;/*絶対配置*/
+    top: 20%;
+    left: 5%;
+  }
+
+  .userarea {/*親div*/
+     position: relative;/*相対配置*/
+  }
+
+  .userarea .userword {
+    position: absolute;/*絶対配置*/
+    top: 20%;
+    left: 5%;
+  }
+  
+ -->
+ </style>
+</head>
+
+<body  >
+<div id = "fixed">
+<font size=5>■食べたいものをチャットで検索</font><br/>
+<font color="red"> 　　※　本サイトのポップアップを事前に許可してください</font>
+<br/><br/>
+<table border = "0">
+  <tr>
+     <td><input type="text" id="chatinput" name="chatinput" maxlength=30 size=30 /></td>
+     <td id = "selectarea"><select id="changeselect"></select></td>
+     <td><input id="chatbutton" type="image" src="image/triangle.jpeg" alt="送信する"  width="30" height="25"/></td>
+     <td><input id="clearbutton" type="button" value="最初からやり直す"/></td>
+  </tr>
+</table>
+<div id="inputarea"></div>
+<br/>
+</div>
+<table id = "chatarea" border = "0">
+   <tr><td class = "machinearea"><img src="image/r-fukidashi028.jpg" width="330" height="230"/><span class = "machineword">まずは食べたいものを入力してください。</span></td><td></td></tr>
+</table>
+<div id ="endarea"></div>
+</body>
+</html>
