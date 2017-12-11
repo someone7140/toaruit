@@ -55,7 +55,22 @@ $(function(){
                            ': (x軸:' + t.xLabel + ', y軸:' + t.yLabel + ', 円の大きさ:' + rLabel + ')';
                  }
               }
-           }
+          },
+          // クリック時の動作
+          onClick: function(e) {
+              var element = this.getElementAtEvent(e);
+
+              // 1要素以上ある場合
+              if (element.length > 0) {
+                  // ラベル
+                  var datasetLabel = this.config.data.datasets[element[0]._datasetIndex].label;
+                  // データオブジェクト
+                  var data = this.config.data.datasets[element[0]._datasetIndex].data[element[0]._index];
+                  // アラートで値を表示
+                  window.alert( "ラベル："+ datasetLabel + "、x軸："+ data.x + "、y軸："+ data.y + "、円の大きさ：" + data.r);
+                  
+              }
+          }
 	};
 	
     // コンテキストのオブジェクト
@@ -67,5 +82,6 @@ $(function(){
 		       data: bubleChartData,
 		       options: options
 		    });
+	
   
 });
