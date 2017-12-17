@@ -90,6 +90,15 @@ public class WikipediaConstants {
 	
     // 中括弧の終わり
 	public static final String WIKIPEDELIA_CHUKAKKO_END = "}";
+	
+    // 英語⇒日本語変換XML取得用URL前半
+	public static final String WIKIPEDIA_URL_ENTOJP_FHALF = "https://en.wikipedia.org/w/api.php?format=xml&action=query&prop=langlinks&titles=";
+	
+    // 英語⇒日本語変換XML取得用URL後半
+	public static final String WIKIPEDIA_URL_ENTOJP_LHALF = "&lllimit=";
+	
+    // 日本語の言語記号
+	public static final String WIKIPEDIA_JP_LANG = "ja";
 }
 
 
