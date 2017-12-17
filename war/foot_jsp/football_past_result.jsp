@@ -23,14 +23,8 @@
 %>
    <font color="red"> ※　データ取得時にエラーが発生しました。</font>
 <% }else{ %>
-<font size=5>■<%=(String)request.getAttribute("teamName") %></font><br/>
-  ※　本チームの情報を直接参照したい場合はこのページをブックマークしてください。<br/>
   <%=(String)request.getAttribute("resultHtml") %><br/>
-  &nbsp;&nbsp;&nbsp;<input id="displayResult" type="button" value="過去の試合結果を表示"/><br/>
-  <%=(String)request.getAttribute("playerHtml") %>
 <% } %>
-<hr/>
-<div align="left"><font size=3><a href="../football_data.html">リーグ情報の参照へ</a></font></div>
-</div>
+
 </body>
 </html>
