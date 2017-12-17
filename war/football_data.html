@@ -1,0 +1,35 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+<title>ヨーロッパサッカー順位表・チーム情報</title>
+<meta name="description" content="サッカー">
+<meta name="keywords" content="サッカー">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<script type="text/javascript" src="js/jquery-2.2.3.min.js?ver=20170703"></script>
+<script type="text/javascript" src="js_foot/foot_js.js"></script>
+
+</head>
+
+<body bgcolor="lightcyan" >
+<font size=5>■ヨーロッパサッカー順位表・チーム情報</font><br/><br/>
+シーズン選択&nbsp;<select id="seasoncombo"></select>
+&nbsp;&nbsp;&nbsp;リーグ選択&nbsp;
+<select id= "leaguecombo">
+    <option value="PL">Premiere League(England)</option>
+    <option value="PD">Primera Division(Spain)</option>
+    <option value="SA">Serie A(Italy)</option>
+    <option value="BL1">1. Bundesliga(Germany)</option>
+    <option value="FL1">Ligue 1(France)</option>
+    <option value="DED">Eredivisie(Netherlands)</option>
+</select>
+&nbsp;&nbsp;&nbsp;<input id="displayRank" type="button" value="順位表を表示する"/><br/>
+<div id="ranking">
+</div>
+
+
+</body>
+</html>
