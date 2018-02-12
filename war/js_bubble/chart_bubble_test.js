@@ -83,5 +83,15 @@ $(function(){
 		       options: options
 		    });
 	
+	//マウス移動時のイベント
+	$("#bubblechart").mousemove(function (e) {
+		// 描画使用したオブジェクトからelementを取得
+	    var element = bubbleChart.getElementAtEvent(e);
+	    if (element.length > 0) {
+	    	// 選択したdatasetのラベルを表示
+	    	$("#bubbleLabel").text( bubbleChart.config.data.datasets[element[0]._datasetIndex].label );
+	    }
+	});
   
 });
+
