@@ -1,0 +1,14 @@
+.outer{
+  display: table;
+  height:100%;
+}
+
+.inner{
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 2.2em;
+}
+
+.detail{
+  font-size: 0.8em;
+}
